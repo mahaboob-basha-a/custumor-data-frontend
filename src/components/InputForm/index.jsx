@@ -28,7 +28,7 @@ const InputForm = () => {
     e.preventDefault();
     const newErrors = {};
     // Add validation checks
-    if (!formData.phoneNumber) newErrors.phoneNumber = 'Phone number is required';
+    if (!formData.phoneNumber || formData.phoneNumber.length < 10) newErrors.phoneNumber = 'Phone number is required';
     if (!formData.name) newErrors.name = 'Name is required';
     if (!formData.email) newErrors.email = 'Valid email is required';
     if (!formData.address) newErrors.address = 'Address is required';
@@ -40,7 +40,7 @@ const InputForm = () => {
     }
 
     // Submit data to backend
-    axios.post('http://localhost:3000/api/customers', formData)
+    axios.post('https://customer-data-backend.onrender.com/api/customers', formData)
       .then(response => {
         toast.success('Data submitted successfully');
         setFormData({
