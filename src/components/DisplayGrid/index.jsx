@@ -8,7 +8,7 @@ const DisplayGrid = () => {
 
   useEffect(() => {
     const fetchData = async ()=>{
-      const res = await axios.get('http://localhost:3000/api/customers')
+      const res = await axios.get('https://customer-data-backend.onrender.com/api/customers')
       console.log(res.data)
       setData(res.data);
     }
